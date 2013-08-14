@@ -2,38 +2,56 @@
 
 import urllib  
 
-courseWeb = urllib.urlopen("http://140.116.165.74/qry/qry001.php?dept_no=AA")  
+courseWeb = urllib.urlopen("http://140.116.165.74/qry/qry001.php?dept_no="+"AA")  
 webContent = courseWeb.read().decode('utf_8')  
 courseWeb.close()  
 
 import HTMLParser  
 
-count = 0 
-counter = 0
-title = []
+added = False
+formStart = False
+columnStart = False
+
+result = [] 
+course = []
 
 class courseHTMLParser(HTMLParser.HTMLParser):  
 
 	def handle_starttag(self, tag, attrs): 
+		global  added , course , formStart ,columnStart
+
 		if tag == 'tr':
-			print '\n%s' %tag, 
-		if tag == 'td':
-			print "%s" %tag, 
+			formStart = True
+			course = []
+		if tag == 'td' :
+			columnStart = True
+			added = False
 	
-#	def handle_startendtag(self, tag, attrs):
-#		print u'空標籤 %s %s' % (tag, attrs)  
-  
-	def handle_endtag(self, tag):  
-		if tag == 'tr':
-			print '/%s' %tag, 
-		if tag == 'td':
-			print '/%s' %tag,
-  
 	def handle_data(self, data):
-		if data.find("  ") is not -1 and data.find("\t") != 1 :
-			print " ",
-		else:
-			print u'%s' %data,
+		global added , course, formStart ,columnStart
+		
+		if formStart == True:
+			if data.strip() == "":
+				added = True
+				course.append('empty')
+			else:
+				if added ==True and columnStart == True:
+					course[ len(course)-1 ] += " " + data.strip()
+				else:	
+					added = True
+					course.append( data.strip() )
+	
+	def handle_endtag(self, tag): 
+		global added , course , formStart ,columnStart , result
+
+		if tag == 'tr':
+			formStart = False
+			result.append(course)
+		if tag == 'td':
+			column = False
+			if added == False:
+				course.append('empty')
+  
 	
 	def unknown_decl(self, data):
 		"""Override unknown handle method to avoid exception"""  
@@ -53,4 +71,14 @@ except HTMLParser.HTMLParseError, data:
   
 Parser.close()  
   
-#raw_input() 
+  
+title = [ "系所名稱" , "系號" , "序號" , "課程碼" , "分班碼" , "班別" , "年級" , "類別" , "英語授課" , "課程名稱 (連結課程地圖)" , "選必修" , "學分" , "教師姓名 *:主負責老師" , "已選課人數 " , "餘額 " , "時間" , "教室" , "備註" , "限選條件" , "業界專家參與" , "屬性碼" , "跨領域學分學程" ] 
+
+result[0] = title
+  
+#raw_input()
+
+for i in range(0,len(result)):
+	for j in range( 0 , len(result[i]) ):
+		print "%d  %s" %(j+1,result[i][j])
+	print "\n"
