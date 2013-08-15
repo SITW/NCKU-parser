@@ -2,7 +2,7 @@
 
 import urllib  
 
-courseWeb = urllib.urlopen("http://140.116.165.74/qry/qry001.php?dept_no="+"AA")  
+courseWeb = urllib.urlopen("http://140.116.165.74/qry/qry001.php?dept_no="+"H3")  
 webContent = courseWeb.read().decode('utf_8')  
 courseWeb.close()  
 
@@ -33,7 +33,7 @@ class courseHTMLParser(HTMLParser.HTMLParser):
 		if formStart == True:
 			if data.strip() == "":
 				added = True
-				course.append('empty')
+				course.append(u'empty')
 			else:
 				if added ==True and columnStart == True:
 					course[ len(course)-1 ] += " " + data.strip()
@@ -50,7 +50,7 @@ class courseHTMLParser(HTMLParser.HTMLParser):
 		if tag == 'td':
 			column = False
 			if added == False:
-				course.append('empty')
+				course.append(u'empty')
   
 	
 	def unknown_decl(self, data):
@@ -75,10 +75,20 @@ Parser.close()
 title = [ "系所名稱" , "系號" , "序號" , "課程碼" , "分班碼" , "班別" , "年級" , "類別" , "英語授課" , "課程名稱 (連結課程地圖)" , "選必修" , "學分" , "教師姓名 *:主負責老師" , "已選課人數 " , "餘額 " , "時間" , "教室" , "備註" , "限選條件" , "業界專家參與" , "屬性碼" , "跨領域學分學程" ] 
 
 result[0] = title
-  
-#raw_input()
 
-for i in range(0,len(result)):
-	for j in range( 0 , len(result[i]) ):
-		print "%d  %s" %(j+1,result[i][j])
-	print "\n"
+#output like a json file
+
+print "["
+for i in range (1,len(result)):
+	print "\t{"
+	for j in range (0 , len( result[i]) ):
+		print "\t\t\"%s\":\"%s\"" % ( result[0][j] , result[i][j].encode('utf-8') ),
+		if j is not len(result[i])-1:
+			print ","
+		else:
+			print "\n",
+	print "\t}",
+	if i is not len(result)-1:
+		print ","
+print "\n]"
+		
