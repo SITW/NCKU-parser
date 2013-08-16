@@ -9,13 +9,15 @@ courseIndex.close()
 import HTMLParser
 
 departmentNo = []
+departmentName = []
 
 class departmentHTMLParser(HTMLParser.HTMLParser):
 
 	def handle_data(self,data):
 		if data.find('( ') >= 0:
-			print "%s" %data[3:5]
+#			print "%s" %data[3:5]
 			departmentNo.append(data[3:5])
+			departmentName.append(data[7:])
 
 Parser = departmentHTMLParser()
 
@@ -28,5 +30,6 @@ except HTMLParser.HTMLParseError,data:
 	print "error" + data.msh
 Parser.close()
 
-for i in range(len(departmentNo)):
-	print departmentNo[i]
+for i in range(len(departmentName)):
+	print departmentName[i]
+
