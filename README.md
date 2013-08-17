@@ -12,4 +12,4 @@ python courseParser.py
 
 Author
 ---
-[@Lee-W](https://github.com/chilijung)
+[@Lee-W](https://www.facebook.com/clLeeW)
