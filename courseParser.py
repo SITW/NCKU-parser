@@ -76,9 +76,8 @@ def mainProcess(fileName):
   Parser.close()
   result[0] = title
 
-  mkdir_p("./result")
-  inputFile=open("./result/"+ fileName+".json" , 'w' )
-
+  inputFile = open("./result/"+ fileName+".json" , 'w' )
+  print ("Open File" + fileName )
   inputFile.write("[\n")
   for i in range (1,len(result)):
     inputFile.write("\t{\n")
@@ -92,15 +91,20 @@ def mainProcess(fileName):
     if i is not len(result)-1:
       inputFile.write( ",\n")
   inputFile.write("\n]")
+  inputFile.close()
+  print ("Close File" + fileName )
 
 def mkdir_p(path):
   try:
     os.makedirs(path)
+    print ("Create a Dir ./result")
   except OSError as exc: # Python >2.5
     if exc.errno == errno.EEXIST and os.path.isdir(path):
+      print ("Dir already exists")
       pass
     else: raise
 
+mkdir_p("./result")
 for i in range(len(departNum)):
 
   added = False
