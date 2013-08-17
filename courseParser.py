@@ -35,7 +35,7 @@ class courseHTMLParser(HTMLParser.HTMLParser):
     if formStart == True:
       if data.strip() == "":
         added = True
-        course.append(u'empty')
+        course.append(u'')
       else:
         if added ==True and columnStart == True:
           course[ len(course)-1 ] += " " + data.strip()
@@ -52,7 +52,7 @@ class courseHTMLParser(HTMLParser.HTMLParser):
     if tag == 'td':
       column = False
       if added == False:
-        course.append(u'empty')
+        course.append(u'')
 
 
   def unknown_decl(self, data):
@@ -85,6 +85,9 @@ def mainProcess(fileName):
       result[0][j] = re.sub(' +', ' ', result[0][j])
       result[i][j] = re.sub(' +', ' ', result[i][j])
       inputFile.write( "\t\t\"%s\":\"%s\"" % ( result[0][j] , result[i][j].encode('utf-8') ) )
+      print "--------"
+      print result[0][j]
+      print result[i][j].encode('utf-8')
       if j is not len(result[i])-1:
         inputFile.write(",\n")
       else:
