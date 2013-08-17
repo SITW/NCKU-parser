@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import urllib, HTMLParser, os, errno
+import urllib, HTMLParser, os, errno, re
 
 #courseWeb = urllib.urlopen("http://140.116.165.74/qry/qry001.php?dept_no="+"H3")
 #webContent = courseWeb.read().decode('utf_8')
@@ -82,6 +82,8 @@ def mainProcess(fileName):
   for i in range (1,len(result)):
     inputFile.write("\t{\n")
     for j in range (0 , len( result[i]) ):
+      result[0][j] = re.sub(' +', ' ', result[0][j])
+      result[i][j] = re.sub(' +', ' ', result[i][j])
       inputFile.write( "\t\t\"%s\":\"%s\"" % ( result[0][j] , result[i][j].encode('utf-8') ) )
       if j is not len(result[i])-1:
         inputFile.write(",\n")
