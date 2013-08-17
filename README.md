@@ -1,9 +1,6 @@
 course-parser
 =============
-
-Course Parser
----
-### Parser to parse NCKU courses
+Course Parser is a Parser to parse NCKU courses
 
 Usage
 ---
