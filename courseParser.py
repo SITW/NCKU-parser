@@ -56,7 +56,7 @@ class courseHTMLParser(HTMLParser.HTMLParser):
 
   def unknown_decl(self, data):
     """Override unknown handle method to avoid exception"""
-        pass
+    pass
 
 def mainProcess(fileName):
   courseWeb = urllib.urlopen("http://140.116.165.74/qry/qry001.php?dept_no="+fileName)
