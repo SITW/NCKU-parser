@@ -10,4 +10,5 @@ python courseParser.py
 
 Author
 ---
+
 [@Lee-W](https://github.com/lee-w)
