@@ -18,9 +18,26 @@ Club Parser is a Parser to parse club info of NCKU
 ruby club-parser/club-parser.rb
 ```
 
+- Club Event Parser
+Club Event Parser is a Parser to parse club event info of NCKU
+
+```
+ruby club-event-parser/club-event-parser.rb
+```
+
+> When Using ruby parser have error msg, run :
+
+
+```
+gem install ruby-progressbar
+gem install nokogiri
+gem install json
+gem install open-uri
+```
+
 Author
 ---
 
-[@Lee-W](https://github.com/lee-w) 
+[@Lee-W](https://github.com/lee-w)
 
 [@garylai1990](https://github.com/garylai1990)
