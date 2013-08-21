@@ -21,5 +21,6 @@ ruby club-parser/club-parser.rb
 Author
 ---
 
-[@Lee-W](https://github.com/lee-w)
+[@Lee-W](https://github.com/lee-w) 
+
 [@garylai1990](https://github.com/garylai1990)
