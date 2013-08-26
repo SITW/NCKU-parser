@@ -1,3 +1,5 @@
+// this seperate the activities into year fragments
+
 var fs = require('fs');
 var buffer = require('buffer');
 var segment_file = '../club-event-fragment';

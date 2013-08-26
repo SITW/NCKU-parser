@@ -38,6 +38,8 @@ gem install open-uri
 Author
 ---
 
-[@Lee-W](https://github.com/lee-w)
+[@Lee-W](https://github.com/lee-w) -> course parser
 
-[@garylai1990](https://github.com/garylai1990)
+[@garylai1990](https://github.com/garylai1990) -> activity parser, club parser
+
+[@chilijung](https:?/github.com/chilijung) -> activity seperate into fragment(month, year units)
