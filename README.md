@@ -38,6 +38,23 @@ node club-event-parser/club-event-yfragment.js
 
 > seperate activities into year fragment
 
+- Club activity month fragment
+
+Required: npm, nodejs
+
+```
+node club-event-parser/club-event-mfragment.js <what year do you want to parse>
+```
+
+for example:
+
+```
+node club-event-parser/club-event-mfragment.js 2011
+```
+> note: you have to run the year fragment first before you run month fragment.
+> seperate activities into month fragment
+
+
 
 ```
 gem install ruby-progressbar
