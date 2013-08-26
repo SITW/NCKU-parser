@@ -28,6 +28,17 @@ ruby club-event-parser/club-event-parser.rb
 > When Using ruby parser have error msg, run :
 
 
+- Club activity year fragment
+
+Required: npm, nodejs
+
+```
+node club-event-parser/club-event-yfragment.js
+```
+
+> seperate activities into year fragment
+
+
 ```
 gem install ruby-progressbar
 gem install nokogiri
