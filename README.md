@@ -25,6 +25,13 @@ Club Event Parser is a Parser to parse club event info of NCKU
 ruby club-event-parser/club-event-parser.rb
 ```
 
+- Teacher Parser:
+Teacher Parser is a Parser to parse teachers' profiles info of NCKU
+
+```
+ruby teacher-parser/teacher-parser.rb
+```
+
 > When Using ruby parser have error msg, run :
 
 
